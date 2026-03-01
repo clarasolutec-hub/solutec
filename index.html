@@ -3,98 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STC - Soluciones Tecnológicas C. Lara | Ingeniería y Resiliencia</title>
+    <title>STC - Soluciones Tecnológicas C. Lara</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Colores extraídos de identidad de Ingeniería */
+        :root {
+            --color-principal: #0A2647; /* Azul Marino Profundo */
+            --color-acento: #144272;    /* Azul Eléctrico */
+            --color-detalle: #205295;   /* Azul Cobalto */
+            --color-resalte: #2C74B3;   /* Azul Claro Tecnológico */
+        }
+        .bg-stc-dark { background-color: var(--color-principal); }
+        .bg-stc-accent { background-color: var(--color-acento); }
+        .text-stc-blue { color: var(--color-resalte); }
+        .border-stc { border-color: var(--color-resalte); }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
 
-    <nav class="bg-slate-900 text-white p-4 sticky top-0 z-50 shadow-lg">
+    <nav class="bg-stc-dark text-white p-4 sticky top-0 z-50 shadow-2xl">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold tracking-tighter">STC <span class="text-blue-400">INGENIERÍA</span></h1>
-            <div class="space-x-6 hidden md:block">
-                <a href="#servicios" class="hover:text-blue-400">Servicios</a>
-                <a href="#experiencia" class="hover:text-blue-400">Trayectoria</a>
-                <a href="#contacto" class="bg-blue-600 px-4 py-2 rounded hover:bg-blue-700 transition">Solicitar Auditoría</a>
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="STC Logo" class="h-12 w-auto object-contain bg-white p-1 rounded">
+                <div class="leading-tight">
+                    <h1 class="text-xl font-bold tracking-widest uppercase">STC</h1>
+                    <p class="text-[10px] text-stc-blue font-semibold uppercase tracking-tighter">Soluciones Tecnológicas</p>
+                </div>
+            </div>
+            <div class="space-x-8 hidden md:flex font-medium text-sm">
+                <a href="#servicios" class="hover:text-stc-blue transition">SERVICIOS</a>
+                <a href="#proyectos" class="hover:text-stc-blue transition">PROYECTOS</a>
+                <a href="#contacto" class="bg-stc-blue px-5 py-2 rounded-full hover:bg-white hover:text-stc-dark transition font-bold">CONTACTO</a>
             </div>
         </div>
     </nav>
 
-    <header class="bg-slate-800 text-white py-20 px-4 border-b-4 border-blue-600">
-        <div class="container mx-auto text-center">
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-4 uppercase">Infraestructura Crítica y Convergencia Tecnológica</h2>
-            <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-8">Especialistas en redes de fibra óptica, seguridad electrónica y respaldo de energía con 20 años de experiencia técnica en Venezuela y Panamá.</p>
-            <div class="flex justify-center gap-4">
-                <a href="#servicios" class="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-slate-800 transition">Ver Soluciones</a>
-                <a href="mailto:c.larasolutec@gmail.com" class="bg-blue-600 px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition">Contacto Directo</a>
+    <header class="relative bg-stc-dark overflow-hidden py-24 text-white">
+        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+        <div class="container mx-auto text-center relative z-10 px-4">
+            <h2 class="text-4xl md:text-6xl font-black mb-6 leading-tight">INGENIERÍA QUE CONECTA <br><span class="text-stc-blue">PANAMÁ Y VENEZUELA</span></h2>
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10 font-light">
+                Expertos en <span class="text-white font-bold">FTTH, Seguridad Electrónica e Infraestructura Crítica</span>. 
+                Más de 20 años blindando la operatividad de empresas líderes.
+            </p>
+            <div class="flex flex-wrap justify-center gap-5">
+                <a href="#servicios" class="bg-stc-blue text-white px-8 py-4 rounded-lg font-bold shadow-lg hover:scale-105 transition-all">NUESTRAS SOLUCIONES</a>
+                <a href="mailto:c.larasolutec@gmail.com" class="border-2 border-stc text-stc-blue px-8 py-4 rounded-lg font-bold hover:bg-stc-blue hover:text-white transition-all">CONSULTORÍA TÉCNICA</a>
             </div>
         </div>
     </header>
 
-    <section id="servicios" class="py-16 container mx-auto px-4">
-        <h3 class="text-3xl font-bold text-center mb-12 text-slate-900 underline decoration-blue-500">Unidades de Negocio</h3>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-blue-500 hover:shadow-xl transition">
-                <i class="fa-solid fa-network-wired text-4xl text-blue-600 mb-4"></i>
-                <h4 class="text-xl font-bold mb-2">Redes e Infraestructura</h4>
-                <ul class="text-gray-600 space-y-2 text-sm">
-                    <li>• Diseño y despliegue de redes GPON/FTTH.</li>
-                    <li>• Certificación de puntos de red y enlaces.</li>
-                    <li>• Enlaces inalámbricos de largo alcance.</li>
-                </ul>
+    <section id="servicios" class="py-20 container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h3 class="text-3xl font-black text-stc-dark uppercase tracking-widest">Unidades de Especialidad</h3>
+            <div class="h-1.5 w-24 bg-stc-blue mx-auto mt-4 rounded-full"></div>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-10">
+            <div class="group bg-white border border-gray-100 p-8 rounded-2xl shadow-sm hover:shadow-2xl transition-all border-b-8 border-b-stc-dark">
+                <div class="w-16 h-16 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-stc-blue transition-colors">
+                    <i class="fa-solid fa-microchip text-3xl text-stc-dark group-hover:text-white"></i>
+                </div>
+                <h4 class="text-xl font-bold mb-4 text-stc-dark uppercase">Redes y Fibra (FTTH)</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    Diseño de redes GPON, cálculos de potencia óptica y despliegue de infraestructura de alta disponibilidad.
+                </p>
             </div>
-            <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-blue-500 hover:shadow-xl transition">
-                <i class="fa-solid fa-bolt text-4xl text-blue-600 mb-4"></i>
-                <h4 class="text-xl font-bold mb-2">Respaldo Energético</h4>
-                <ul class="text-gray-600 space-y-2 text-sm">
-                    <li>• UPS Online de doble conversión.</li>
-                    <li>• Sistemas de autonomía para cortes críticos.</li>
-                    <li>• Estabilización y protección de equipos.</li>
-                </ul>
+
+            <div class="group bg-white border border-gray-100 p-8 rounded-2xl shadow-sm hover:shadow-2xl transition-all border-b-8 border-b-stc-blue">
+                <div class="w-16 h-16 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-stc-blue transition-colors">
+                    <i class="fa-solid fa-battery-three-quarters text-3xl text-stc-dark group-hover:text-white"></i>
+                </div>
+                <h4 class="text-xl font-bold mb-4 text-stc-dark uppercase">Sistemas de Respaldo</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    Protección contra fallas de red eléctrica mediante UPS Online y sistemas de transferencia automática.
+                </p>
             </div>
-            <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-blue-500 hover:shadow-xl transition">
-                <i class="fa-solid fa-shield-halved text-4xl text-blue-600 mb-4"></i>
-                <h4 class="text-xl font-bold mb-2">Seguridad e IA</h4>
-                <ul class="text-gray-600 space-y-2 text-sm">
-                    <li>• CCTV IP con analítica de video avanzada.</li>
-                    <li>• Control de acceso biométrico autónomo.</li>
-                    <li>• Domótica residencial y corporativa.</li>
-                </ul>
+
+            <div class="group bg-white border border-gray-100 p-8 rounded-2xl shadow-sm hover:shadow-2xl transition-all border-b-8 border-b-stc-dark">
+                <div class="w-16 h-16 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-stc-blue transition-colors">
+                    <i class="fa-solid fa-eye text-3xl text-stc-dark group-hover:text-white"></i>
+                </div>
+                <h4 class="text-xl font-bold mb-4 text-stc-dark uppercase">Vigilancia e IA</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    CCTV avanzado con analítica de comportamiento y control de acceso biométrico unificado.
+                </p>
             </div>
         </div>
     </section>
 
-    <section id="experiencia" class="bg-slate-100 py-16">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2">
-                <h3 class="text-3xl font-bold mb-6 text-slate-900">Por qué elegir STC</h3>
-                <p class="text-lg text-gray-700 leading-relaxed mb-4">
-                    Bajo la dirección del <strong>Ing. Jose Luis Clara</strong>, aplicamos una metodología de ingeniería rigurosa para garantizar la resiliencia en entornos complejos como Venezuela y mercados en expansión como Panamá.
-                </p>
-                <div class="flex gap-8 mt-6 text-center">
-                    <div><span class="block text-3xl font-bold text-blue-600">20+</span><span class="text-xs uppercase text-gray-500 italic">Años Experiencia</span></div>
-                    <div><span class="block text-3xl font-bold text-blue-600">100%</span><span class="text-xs uppercase text-gray-500 italic">Operatividad</span></div>
+    <footer id="contacto" class="bg-stc-dark text-white pt-16 pb-8 px-4">
+        <div class="container mx-auto grid md:grid-cols-2 gap-12 border-b border-gray-700 pb-12 mb-8">
+            <div>
+                <h4 class="text-2xl font-bold mb-4">STC - Ing. Jose Luis Clara</h4>
+                <p class="text-gray-400 mb-6">Consultoría y ejecución de proyectos de ingeniería con enfoque en convergencia tecnológica y seguridad.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-2xl hover:text-stc-blue"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" class="text-2xl hover:text-stc-blue"><i class="fa-brands fa-whatsapp"></i></a>
                 </div>
             </div>
-            <div class="md:w-1/2 grid grid-cols-2 gap-4">
-                <div class="bg-blue-600 h-32 rounded shadow text-white flex items-center justify-center font-bold">FTTH</div>
-                <div class="bg-slate-800 h-32 rounded shadow text-white flex items-center justify-center font-bold">UPS</div>
-                <div class="bg-slate-800 h-32 rounded shadow text-white flex items-center justify-center font-bold">CCTV</div>
-                <div class="bg-blue-600 h-32 rounded shadow text-white flex items-center justify-center font-bold">IA</div>
+            <div class="bg-stc-accent p-6 rounded-xl">
+                <h5 class="font-bold mb-4">Ubicaciones Estratégicas</h5>
+                <ul class="space-y-3 text-sm text-gray-300">
+                    <li><i class="fa-solid fa-location-dot text-stc-blue mr-2"></i> Caracas, Venezuela</li>
+                    <li><i class="fa-solid fa-location-dot text-stc-blue mr-2"></i> Ciudad de Panamá, Panamá</li>
+                    <li><i class="fa-solid fa-envelope text-stc-blue mr-2"></i> c.larasolutec@gmail.com</li>
+                </ul>
             </div>
         </div>
-    </section>
-
-    <footer id="contacto" class="bg-slate-900 text-white py-12 px-4">
-        <div class="container mx-auto text-center">
-            <h3 class="text-2xl font-bold mb-4 italic">¿Listo para blindar su infraestructura?</h3>
-            <p class="mb-8 text-gray-400">Solicite una auditoría técnica inicial sin compromiso.</p>
-            <div class="flex flex-col md:flex-row justify-center gap-6 mb-8 text-lg">
-                <a href="mailto:c.larasolutec@gmail.com" class="hover:text-blue-400"><i class="fa-envelope mr-2"></i> c.larasolutec@gmail.com</a>
-                <span><i class="fa-location-dot mr-2 text-blue-400"></i> Venezuela | Panamá | Dominicana</span>
-            </div>
-            <p class="text-xs text-gray-600 border-t border-gray-800 pt-8">&copy; 2026 STC - Soluciones Tecnológicas C. Lara. Todos los derechos reservados.</p>
-        </div>
+        <p class="text-center text-xs text-gray-500 uppercase tracking-widest">© 2026 STC Soluciones Tecnológicas. Ingeniería de Clase Mundial.</p>
     </footer>
 
 </body>
