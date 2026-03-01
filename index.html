@@ -1,184 +1,375 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STC | Terminal de Ingeniería & Resiliencia Infraestructural</title>
+    <title>STC | Autoridad Técnica en Infraestructura Crítica</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        stcBlue: '#0047AB', // Azul Rey Corporativo
+                        stcSlate: '#1E293B', // Gris Pizarra
+                        stcOffWhite: '#F8FAFC' // Blanco Puro (Matizado)
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- JSON-LD SEO Local (Panamá / Caracas) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "STC - Soluciones Tecnológicas C. Lara",
+      "description": "Ingeniería de Infraestructuras Críticas. Cero milisegundos de transferencia. Certificación de Uptime 100% en enlaces GPON, analítica perimetral HEVC y respaldo energético Online Doble Conversión.",
+      "areaServed": [
+        {"@type": "City", "name": "Caracas"},
+        {"@type": "City", "name": "Panamá"}
+      ],
+      "url": "https://www.stc-uptime.com",
+      "telephone": "+580000000000",
+      "priceRange": "$$$$",
+      "sameAs": []
+    }
+    </script>
     <style>
-        :root { --stc-blue: #0047AB; --stc-dark: #0a0f1a; --stc-accent: #38bdf8; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--stc-dark); color: #e2e8f0; }
-        .mono { font-family: 'JetBrains Mono', monospace; }
-        .terminal-border { border: 1px solid rgba(56, 189, 248, 0.2); }
-        .scanline { background: linear-gradient(to bottom, transparent 50%, rgba(0, 71, 171, 0.05) 50%); background-size: 100% 4px; }
-        .data-grid { background-image: radial-gradient(circle, #1e293b 1px, transparent 1px); background-size: 20px 20px; }
-        .glow-blue { box-shadow: 0 0 20px rgba(0, 71, 171, 0.3); }
+        body { background-color: #0F172A; color: #F8FAFC; }
+        .glass-panel { 
+            background: rgba(30, 41, 59, 0.7); 
+            backdrop-filter: blur(8px); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+        }
+        .accent-border { border-left: 4px solid #0047AB; }
+        .grid-bg {
+            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
     </style>
 </head>
-<body class="scanline data-grid min-h-screen">
-
-    <header class="fixed w-full z-50 bg-[#0a0f1a]/90 backdrop-blur-xl border-b border-sky-900/30">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <div class="flex items-center gap-6">
-                <img src="logo.png" alt="STC" class="h-10 w-auto brightness-125">
-                <div class="hidden lg:block text-[10px] mono text-sky-500 font-bold uppercase tracking-[0.3em]">
-                    System Status: <span class="text-green-500 animate-pulse">● OPTIMAL_RESILIENCE</span>
-                </div>
+<body class="antialiased min-h-screen grid-bg font-sans selection:bg-stcBlue selection:text-white pb-20">
+    <!-- HERO SECTION -->
+    <header class="relative px-6 py-24 md:py-32 max-w-7xl mx-auto overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-stcBlue opacity-20 blur-3xl rounded-full transform translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+        
+        <div class="relative z-10 max-w-4xl">
+            <span class="font-mono text-stcBlue font-bold tracking-widest text-sm uppercase mb-4 block">
+                [SYS_INIT] STC ARCHITECTURE
+            </span>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight mb-8">
+                El producto no es hardware.<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-stcBlue to-blue-400">Es Uptime Absoluto.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-400 font-light mb-10 max-w-2xl leading-relaxed">
+                Ingeniería asimétrica para infraestructuras críticas en Caracas y Panamá. Cero milisegundos de latencia en decisiones operativas. Tolerancia a fallos certificada.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#auditoria" class="bg-stcBlue hover:bg-blue-800 text-white px-8 py-4 font-bold text-sm tracking-wider uppercase transition-colors text-center shadow-[0_0_20px_rgba(0,71,171,0.4)]">
+                    Auditoría Técnica
+                </a>
+                <a href="#arquitectura" class="border border-gray-700 hover:border-gray-500 text-gray-300 px-8 py-4 font-bold text-sm tracking-wider uppercase transition-colors text-center">
+                    Ver Matriz Táctica
+                </a>
             </div>
-            <nav class="flex gap-10 items-center">
-                <div class="hidden md:flex gap-8 mono text-[10px] uppercase font-bold tracking-widest text-slate-400">
-                    <a href="#infra" class="hover:text-sky-400 transition">01_INFRA</a>
-                    <a href="#logic" class="hover:text-sky-400 transition">02_LOGIC</a>
-                    <a href="#terminal" class="hover:text-sky-400 transition text-sky-500 underline decoration-2 underline-offset-8">03_CALC</a>
-                </div>
-                <a href="mailto:c.larasolutec@gmail.com" class="bg-blue-700 text-white px-6 py-2 text-[10px] font-black uppercase tracking-widest hover:bg-sky-500 transition glow-blue">Solicitar Auditoría SLA</a>
-            </nav>
         </div>
     </header>
-
-    <main class="pt-40 pb-20 px-6">
-        <div class="container mx-auto max-w-7xl">
-            <div class="grid lg:grid-cols-12 gap-12 items-start">
-                
-                <div class="lg:col-span-7">
-                    <span class="mono text-sky-500 font-bold text-xs mb-4 block uppercase tracking-widest">Protocolo de Continuidad de Negocio // PAN-VE</span>
-                    <h1 class="text-6xl lg:text-8xl font-black leading-none mb-10 tracking-tighter text-white">
-                        99.99% <br><span class="text-sky-500">UPTIME</span> <br>CERTIFIED.
-                    </h1>
-                    <p class="text-slate-400 text-xl leading-relaxed max-w-2xl mb-12">
-                        Ingeniería de alta disponibilidad para infraestructuras donde el fallo no es una opción. Especialistas en <span class="text-white font-bold italic">Convergencia Óptica</span> y <span class="text-white font-bold italic">Respaldo de Grado Industrial</span>.
+    <!-- MATRIZ DE CAPACIDADES / ARQUITECTURA -->
+    <section id="arquitectura" class="max-w-7xl mx-auto px-6 py-16">
+        <h2 class="font-mono text-2xl font-bold mb-12 flex items-center gap-4">
+            <span class="text-stcBlue">_</span> Matriz de Capacidades Técnicas
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Transporte -->
+            <div class="glass-panel p-8 hover:bg-stcSlate transition-colors aspect-square flex flex-col justify-between accent-border">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 uppercase tracking-wide text-stcBlue">Transporte de Datos</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        No tiramos cables, certificamos la integridad del dato. Arquitecturas FTTH perimetrales y enlaces de microondas sub-giga curados contra atenuación parasitaria.
                     </p>
-                    <div class="flex flex-wrap gap-4">
-                        <div class="terminal-border bg-slate-900/50 p-6 rounded-sm">
-                            <i class="fa-solid fa-microchip text-sky-500 mb-4 text-2xl"></i>
-                            <h3 class="mono text-xs font-bold uppercase tracking-widest text-white">FTTH GPON</h3>
-                        </div>
-                        <div class="terminal-border bg-slate-900/50 p-6 rounded-sm">
-                            <i class="fa-solid fa-battery-full text-sky-500 mb-4 text-2xl"></i>
-                            <h3 class="mono text-xs font-bold uppercase tracking-widest text-white">Energy Backup</h3>
-                        </div>
-                        <div class="terminal-border bg-slate-900/50 p-6 rounded-sm">
-                            <i class="fa-solid fa-shield-halved text-sky-500 mb-4 text-2xl"></i>
-                            <h3 class="mono text-xs font-bold uppercase tracking-widest text-white">AI Security</h3>
-                        </div>
-                    </div>
                 </div>
-
-                <div class="lg:col-span-5 hidden lg:block">
-                    <div class="terminal-border bg-slate-900/80 p-8 rounded-lg shadow-2xl relative overflow-hidden">
-                        <div class="flex justify-between items-center mb-8 border-b border-sky-900/50 pb-4">
-                            <span class="mono text-[10px] text-sky-400 uppercase tracking-widest font-bold">STC_CORE_MONITOR v4.0</span>
-                            <div class="flex gap-2">
-                                <div class="w-2 h-2 rounded-full bg-red-500 opacity-50"></div>
-                                <div class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></div>
-                            </div>
-                        </div>
-                        <div class="space-y-6">
-                            <div class="flex justify-between items-end">
-                                <span class="mono text-[10px] text-slate-500 uppercase">Optical Power</span>
-                                <span class="text-sky-400 font-bold">-18.4 dBm</span>
-                            </div>
-                            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                                <div class="bg-sky-500 h-full w-[85%]"></div>
-                            </div>
-                            <div class="flex justify-between items-end">
-                                <span class="mono text-[10px] text-slate-500 uppercase">UPS Load 1</span>
-                                <span class="text-sky-400 font-bold">42%</span>
-                            </div>
-                            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                                <div class="bg-blue-600 h-full w-[42%]"></div>
-                            </div>
-                            <div class="flex justify-between items-end">
-                                <span class="mono text-[10px] text-slate-500 uppercase">AI Frame Rate</span>
-                                <span class="text-sky-400 font-bold">60 FPS</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="font-mono text-xs text-gray-500 mt-6 grid grid-cols-2 gap-2">
+                    <span class="bg-gray-800 px-2 py-1 rounded">GPON / EPON</span>
+                    <span class="bg-gray-800 px-2 py-1 rounded">ITU-T G.652D</span>
+                    <span class="bg-gray-800 px-2 py-1 rounded">OSFP / QSFP28</span>
                 </div>
             </div>
-        </div>
-    </main>
-
-    <section id="terminal" class="py-32 bg-[#0d1421] border-y border-sky-900/20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-20">
-                <h2 class="text-3xl font-black text-white italic tracking-tighter uppercase underline decoration-sky-600 decoration-4 underline-offset-8">Módulo de Ingeniería STC</h2>
-            </div>
-            
-            <div class="grid lg:grid-cols-2 gap-12">
-                <div class="terminal-border p-10 bg-slate-900/40 rounded-sm">
-                    <h3 class="mono text-sky-500 text-xs font-black mb-8 uppercase tracking-widest flex items-center gap-3">
-                        <i class="fa-solid fa-terminal"></i> 01. Link_Budget_Calculator
-                    </h3>
-                    <div class="space-y-6">
-                        <div>
-                            <label class="block mono text-[10px] text-slate-500 mb-2 uppercase">Distancia del Enlace (KM)</label>
-                            <input type="number" id="dist" value="2" class="w-full bg-slate-800/50 border border-sky-900/30 p-4 text-white font-bold outline-none focus:border-sky-500 transition">
-                        </div>
-                        <div>
-                            <label class="block mono text-[10px] text-slate-500 mb-2 uppercase">Splitter Ratio (Pérdida dB)</label>
-                            <select id="split" class="w-full bg-slate-800/50 border border-sky-900/30 p-4 text-white font-bold outline-none focus:border-sky-500">
-                                <option value="10.5">1:8 (10.5 dB)</option>
-                                <option value="13.8">1:16 (13.8 dB)</option>
-                                <option value="17.1">1:32 (17.1 dB)</option>
-                                <option value="20.5">1:64 (20.5 dB)</option>
-                            </select>
-                        </div>
-                        <button onclick="calcFiber()" class="w-full bg-sky-600/20 border border-sky-500 text-sky-500 py-4 font-black uppercase text-[10px] tracking-widest hover:bg-sky-500 hover:text-white transition">Ejecutar Análisis Óptico</button>
-                        <p class="mono text-[10px] text-center mt-4 text-slate-500">Total Loss: <span id="fiberRes" class="text-sky-400">--</span> dBm</p>
-                    </div>
+            <!-- Energía Crítica -->
+            <div class="glass-panel p-8 hover:bg-stcSlate transition-colors aspect-square flex flex-col justify-between accent-border">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 uppercase tracking-wide text-stcBlue">Energía Crítica</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        No vendemos "baterías", vendemos transferencia cero (0ms). Diseños termodinámicos en rectificadores y bancos Litio/Gel para topologías UPS Doble Conversión.
+                    </p>
                 </div>
-
-                <div class="terminal-border p-10 bg-slate-900/40 rounded-sm">
-                    <h3 class="mono text-sky-500 text-xs font-black mb-8 uppercase tracking-widest flex items-center gap-3">
-                        <i class="fa-solid fa-terminal"></i> 02. UPS_Autonomy_Engine
-                    </h3>
-                    <div class="space-y-6">
-                        <div>
-                            <label class="block mono text-[10px] text-slate-500 mb-2 uppercase">Carga Total (Watts)</label>
-                            <input type="number" id="load" value="1000" class="w-full bg-slate-800/50 border border-sky-900/30 p-4 text-white font-bold outline-none focus:border-sky-500 transition">
-                        </div>
-                        <div>
-                            <label class="block mono text-[10px] text-slate-500 mb-2 uppercase">Baterías Disponibles (Ah)</label>
-                            <input type="number" id="ah" value="200" class="w-full bg-slate-800/50 border border-sky-900/30 p-4 text-white font-bold outline-none focus:border-sky-500 transition">
-                        </div>
-                        <button onclick="calcEnergy()" class="w-full bg-blue-600 text-white py-4 font-black uppercase text-[10px] tracking-widest hover:shadow-[0_0_15px_rgba(0,71,171,0.5)] transition">Calcular Resiliencia</button>
-                        <p class="mono text-[10px] text-center mt-4 text-slate-500">Backup Time: <span id="energyRes" class="text-blue-400">--</span> Minutos</p>
-                    </div>
+                <div class="font-mono text-xs text-gray-500 mt-6 grid grid-cols-2 gap-2">
+                    <span class="bg-gray-800 px-2 py-1 rounded">Online 0ms</span>
+                    <span class="bg-gray-800 px-2 py-1 rounded">LiFePO4 Matrix</span>
+                    <span class="bg-gray-800 px-2 py-1 rounded">THDi &lt; 3%</span>
+                </div>
+            </div>
+            <!-- Seguridad Proactiva -->
+            <div class="glass-panel p-8 hover:bg-stcSlate transition-colors aspect-square flex flex-col justify-between accent-border">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 uppercase tracking-wide text-stcBlue">Seguridad Basada en Datos</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        No instalamos cámaras, implementamos sensores de borde con analítica forense. Metadatos procesados in-situ vía IA para alarmas contextuales en tiempo real.
+                    </p>
+                </div>
+                <div class="font-mono text-xs text-gray-500 mt-6 grid grid-cols-2 gap-2">
+                    <span class="bg-gray-800 px-2 py-1 rounded">Edge AI (NPU)</span>
+                    <span class="bg-gray-800 px-2 py-1 rounded">HEVC / H.265+</span>
+                    <span class="bg-gray-800 px-2 py-1 rounded">ONVIF Profile S/T</span>
                 </div>
             </div>
         </div>
     </section>
-
-    <footer class="py-20 bg-slate-950 border-t border-sky-900/30">
-        <div class="container mx-auto px-6 flex flex-col lg:flex-row justify-between items-center gap-12">
-            <div class="text-center lg:text-left">
-                <img src="logo.png" alt="STC" class="h-12 w-auto mb-8 mx-auto lg:mx-0 opacity-80 brightness-0 invert">
-                <p class="mono text-[9px] uppercase tracking-[0.6em] text-slate-600">Engineering Infrastructure © 2026 STC_SYSTEMS</p>
+    <!-- INGENIERÍA: CALCULADORAS INDUSTRIALES -->
+    <section class="max-w-7xl mx-auto px-6 py-16">
+        <h2 class="font-mono text-2xl font-bold mb-12 flex items-center gap-4">
+            <span class="text-stcBlue">_</span> Bloque Lógico de Cálculo
+        </h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            
+            <!-- Calculadora Link Budget -->
+            <div class="glass-panel p-8 border border-gray-700 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-stcBlue to-transparent"></div>
+                <h3 class="text-xl font-bold mb-6 font-mono">[MOD_A]: Análisis de Pérdida Óptica (Link Budget)</h3>
+                <div class="space-y-4 mb-8">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs uppercase text-gray-400 mb-1">Tx Power OLT (dBm)</label>
+                            <input type="number" id="powerTx" value="3" class="w-full bg-slate-800 border-b border-gray-600 px-3 py-2 text-white font-mono outline-none focus:border-stcBlue">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase text-gray-400 mb-1">Rx Sensibility ONT (dBm)</label>
+                            <input type="number" id="sensRx" value="-27" class="w-full bg-slate-800 border-b border-gray-600 px-3 py-2 text-white font-mono outline-none focus:border-stcBlue">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs uppercase text-gray-400 mb-1">Longitud G.652D (km)</label>
+                            <input type="number" id="fiberLength" value="5" class="w-full bg-slate-800 border-b border-gray-600 px-3 py-2 text-white font-mono outline-none focus:border-stcBlue">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase text-gray-400 mb-1">Empalmes (Fusiones)</label>
+                            <input type="number" id="splices" value="4" class="w-full bg-slate-800 border-b border-gray-600 px-3 py-2 text-white font-mono outline-none focus:border-stcBlue">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase text-gray-400 mb-1">Splitter Cascade</label>
+                            <select id="splitterRatio" class="w-full bg-slate-800 border-b border-gray-600 px-3 py-2 text-white font-mono outline-none focus:border-stcBlue">
+                                <option value="1:8">1x8 (10.5 dB)</option>
+                                <option value="1:16">1x16 (13.5 dB)</option>
+                                <option value="1:64" selected>1x64 (20.5 dB)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="calculateOpticBudget()" class="w-full bg-gray-800 hover:bg-gray-700 text-white font-mono py-3 uppercase tracking-wider text-sm border hover:border-stcBlue transition-all">
+                    Ejecutar Algoritmo
+                </button>
+                <div class="mt-6 p-4 bg-slate-900 border border-gray-700 text-sm">
+                    <span class="block text-xs text-gray-500 mb-2 font-mono">=== SALIDA DEL SISTEMA ===</span>
+                    <div id="opticalResult" class="text-gray-300">Esperando ejecución...</div>
+                </div>
             </div>
-            <div class="flex flex-col items-center lg:items-end gap-4">
-                <span class="mono text-[10px] text-sky-500 uppercase tracking-widest font-bold">Critical Line:</span>
-                <a href="mailto:c.larasolutec@gmail.com" class="text-3xl lg:text-5xl font-black text-white hover:text-sky-400 transition tracking-tighter italic">c.larasolutec@gmail.com</a>
-                <p class="text-[9px] mono text-slate-600 uppercase tracking-widest">Servicios B2B Especializados | Panamá - Venezuela</p>
+            <!-- Calculadora UPS Runtime -->
+            <div class="glass-panel p-8 border border-gray-700 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-600 to-transparent"></div>
+                <h3 class="text-xl font-bold mb-6 font-mono">[MOD_B]: Matriz de Dimensionamiento Energético</h3>
+                <div class="space-y-4 mb-8">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs uppercase text-gray-400 mb-1">Carga Crítica (Watts)</label>
+                            <input type="number" id="criticalLoad" value="1500" class="w-full bg-slate-800 border-b border-gray-600 px-3 py-2 text-white font-mono outline-none focus:border-green-600">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase text-gray-400 mb-1">Temp. Ambiente (°C) PTY/CCS</label>
+                            <input type="number" id="tempAmbient" value="35" class="w-full bg-slate-800 border-b border-gray-600 px-3 py-2 text-white font-mono outline-none focus:border-green-600">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs uppercase text-gray-400 mb-1">Capacidad Bat. (Ah)</label>
+                            <input type="number" id="batteryAh" value="100" class="w-full bg-slate-800 border-b border-gray-600 px-3 py-2 text-white font-mono outline-none focus:border-green-600">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase text-gray-400 mb-1">Voltaje (Vdc)</label>
+                            <input type="number" id="batteryVolts" value="12" class="w-full bg-slate-800 border-b border-gray-600 px-3 py-2 text-white font-mono outline-none focus:border-green-600">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase text-gray-400 mb-1">Cant. Baterías</label>
+                            <input type="number" id="batteryCount" value="8" class="w-full bg-slate-800 border-b border-gray-600 px-3 py-2 text-white font-mono outline-none focus:border-green-600">
+                        </div>
+                    </div>
+                </div>
+                <!-- Oculto para lógica, asumiendo Inversor de 95% -->
+                <input type="hidden" id="inverterEff" value="95">
+                <button onclick="calculateUPS()" class="w-full bg-gray-800 hover:bg-gray-700 text-white font-mono py-3 uppercase tracking-wider text-sm border hover:border-green-600 transition-all">
+                    Computar Autonomía
+                </button>
+                <div class="mt-6 p-4 bg-slate-900 border border-gray-700 text-sm">
+                    <span class="block text-xs text-gray-500 mb-2 font-mono">=== SALIDA DEL SISTEMA ===</span>
+                    <div id="upsResult" class="text-gray-300">Esperando ejecución...</div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <!-- ARQUITECTURA DE VIDEO VBR/IA (CÓDIGO/EXPLICACIÓN) -->
+    <section class="max-w-7xl mx-auto px-6 py-16">
+        <h2 class="font-mono text-2xl font-bold mb-8 flex items-center gap-4">
+            <span class="text-stcBlue">_</span> Lógica de Compresión y Metadata Inteligente (CCTV IP)
+        </h2>
+        <div class="bg-black border border-gray-800 rounded p-6 shadow-xl text-sm font-mono text-gray-300 overflow-x-auto relative">
+            <span class="absolute top-4 right-4 text-xs text-gray-600">H.265 / HEVC Architecture</span>
+            <pre><code>
+// [PROTOCOLO DE SEGURIDAD BASADO EN DATOS - ARCHITECTURE OVERVIEW]
+/**
+ * 1. CAPTURA (Edge Layer)
+ *  - Sensor 4K en borde (Cámara) capta el Raw Feed.
+ *  - NPU integrada procesa frames antes de la codificación en red.
+ *  - Algoritmos BMA (Background Modeling Algorithm) filtran movimiento parasito (hojas, clima).
+ *
+ * 2. OPTIMIZACIÓN DE BITRATE ONDULATORIO (VBR + H.265+)
+ *  - Escenario Pasivo (Sin Intrusiòn): 
+ *      -> Bitrate capado a 256 Kbps, 5 FPS. I-Frame Int a 4s.
+ *      -> Objetivo: Ahorro masivo de Storage NVMe y Ancho de Banda P2P.
+ *  - Metadato Target Triggered (Ej: Human/Vehicle detectado cruzando línea virtual):
+ *      -> Punteo Dinámico. Bitrate escalado a 6144 Kbps, 30 FPS en < 100ms.
+ *      -> El NVR reacciona al metadato del protocolo RTSP/ONVIF Profile T.
+ * 
+ * 3. EXTRACCIÓN GRP (Generación de Reportes Payload)
+ *  - Alarma enviada vía API RESTFUL / Webhook asíncrono.
+ *  - Payload JSON contiene coordenadas de bounding box y snapshot base64.
+ *  - Solo se transfiere el 'Intel' (Dato Útil), garantizando resiliencia en redes de alta congestión.
+ */
+            </code></pre>
+        </div>
+    </section>
+    <!-- CASOS DE ÉXITO & LOGÍSTICA -->
+    <section class="border-t border-b border-gray-800 bg-slate-900/50 my-16">
+        <div class="max-w-7xl mx-auto px-6 py-20 text-center">
+            <h2 class="font-bold text-3xl mb-12">Performance Auditada en Campo</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+                <div class="accent-border pl-6">
+                    <h4 class="text-xl font-bold text-white mb-2">Clúster Bancario (Panamá)</h4>
+                    <p class="text-sm font-mono text-stcBlue mb-4">Métrica: 0 Fallos por Inestabilidad CA</p>
+                    <p class="text-gray-400">Despliegue de arreglos UPS Modulares Tri-fásicos sincronizados vía SNMP con OID propietarios para telemetría profunda. Redundancia N+1 aislando los Datacenters Core de la red pública con una THD de voltaje sub 2%. Continuidad total comprobada.</p>
+                </div>
+                <div class="accent-border pl-6">
+                    <h4 class="text-xl font-bold text-white mb-2">Operaciones Logísticas (Caracas)</h4>
+                    <p class="text-sm font-mono text-stcBlue mb-4">Métrica: 99.8% Tasa de Filtrado de Falsas Alarmas</p>
+                    <p class="text-gray-400">Sustitución de domos ciegos por lentes motorizados con IA. Reducción en 65% del TCO (Total Cost of Ownership) en uso de ancho de banda y servidores locales para DVR, mudando la lógica decodificadora directamente en el borde de los anillos de fibra.</p>
+                </div>
             </div>
         </div>
-    </footer>
-
+    </section>
+    <!-- FORMULARIO DE AUDITORÍA (CTO LEVEL) -->
+    <section id="auditoria" class="max-w-3xl mx-auto px-6 py-16 text-center">
+        <h2 class="text-3xl font-extrabold mb-6">Solicitud de Auditoría Técnica</h2>
+        <p class="text-gray-400 mb-10">Agenda una sesión técnica con nuestra arquitectura de redes y potencia para mapear puntos de fallo único (SPOF) en tu infraestructura.</p>
+        
+        <form class="text-left bg-[#1E293B] p-8 border border-gray-800" onsubmit="event.preventDefault();">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label class="block text-xs uppercase text-gray-500 mb-2 font-mono">ID / Nombre de Operador</label>
+                    <input type="text" class="w-full bg-slate-800 border border-gray-700 px-4 py-3 text-white focus:border-stcBlue focus:outline-none transition-colors" placeholder="SysAdmin / CEO">
+                </div>
+                <div>
+                    <label class="block text-xs uppercase text-gray-500 mb-2 font-mono">Punto de Falla Crítico</label>
+                    <select class="w-full bg-slate-800 border border-gray-700 px-4 py-3 text-white focus:border-stcBlue focus:outline-none transition-colors">
+                        <option>Caída de Enlaces Físicos</option>
+                        <option>Anomalías de Voltaje/Protección</option>
+                        <option>Blindaje y Detección en Perímetro</option>
+                        <option>Auditoría Integral</option>
+                    </select>
+                </div>
+            </div>
+            <button class="w-full bg-stcBlue hover:bg-white hover:text-stcBlue text-white font-bold py-4 transition-colors uppercase tracking-widest text-sm shadow-[0_0_15px_rgba(0,71,171,0.5)]">
+                Iniciar Protocolo de Revisión
+            </button>
+        </form>
+    </section>
+    <!-- SCRIPT DE INTELIGENCIA DE NEGOCIO (LÓGICA MATEMÁTICA) -->
     <script>
-        function calcFiber() {
-            const dist = parseFloat(document.getElementById('dist').value);
-            const split = parseFloat(document.getElementById('split').value);
-            const result = (dist * 0.35) + split + 0.5; // Distancia + Split + Margen de Conectores
-            document.getElementById('fiberRes').innerText = result.toFixed(2);
+        function calculateOpticBudget() {
+            try {
+                const powerTx = parseFloat(document.getElementById('powerTx').value); 
+                const sensRx = parseFloat(document.getElementById('sensRx').value); 
+                const lengthKm = parseFloat(document.getElementById('fiberLength').value); 
+                const splices = parseInt(document.getElementById('splices').value);
+                const splitters = document.getElementById('splitterRatio').value;
+                if(isNaN(powerTx) || isNaN(sensRx) || isNaN(lengthKm) || isNaN(splices)) throw "Data Exception";
+                const maxBudget = powerTx - sensRx;
+                
+                // Pérdidas por Km G.652D @1310nm (~0.35dB/Km conservador industrial) + conectorizacion inicial (1.2dB base)
+                const fiberLoss = lengthKm * 0.35; 
+                const spliceLoss = splices * 0.1; 
+                const connectorLoss = 4 * 0.3; // Tx, Splitter In, Splitter Out, Rx
+                
+                let splitterLoss = 0;
+                switch(splitters) {
+                    case '1:8': splitterLoss = 10.5; break;
+                    case '1:16': splitterLoss = 13.5; break;
+                    case '1:64': splitterLoss = 20.5; break;
+                    default: splitterLoss = 0;
+                }
+                const totalLoss = fiberLoss + spliceLoss + connectorLoss + splitterLoss;
+                const margin = maxBudget - totalLoss;
+                let state = margin >= 3 ? 
+                    `<span class="text-green-500">APROBADO [CERTIFICABLE]</span>` : 
+                    `<span class="text-red-500">FALLO SISTÉMICO [REDISEÑAR]</span>`;
+                document.getElementById('opticalResult').innerHTML = `
+                    <div class="mb-1">Atenuación Estimada: <span class="text-stcBlue font-bold">${totalLoss.toFixed(2)} dB</span></div>
+                    <div class="mb-1">Presupuesto Máximo OLT/ONT: <span class="text-gray-400">${maxBudget.toFixed(2)} dB</span></div>
+                    <div class="mb-2">Margen de Seguridad: <span class="${margin >= 3 ? 'text-green-400' : 'text-red-400'} font-bold">${margin.toFixed(2)} dB</span></div>
+                    <div class="mt-2 pt-2 border-t border-gray-700 text-xs">${state}</div>
+                `;
+            } catch(e) {
+                document.getElementById('opticalResult').innerHTML = `<span class="text-red-500">Error de sintaxis en los parámetros de entrada.</span>`;
+            }
         }
-
-        function calcEnergy() {
-            const load = parseFloat(document.getElementById('load').value);
-            const ah = parseFloat(document.getElementById('ah').value);
-            const res = Math.round(((12 * ah * 0.85) / load) * 60);
-            document.getElementById('energyRes').innerText = res;
+        function calculateUPS() {
+            try {
+                const cLoad = parseFloat(document.getElementById('criticalLoad').value);
+                const tAmb = parseFloat(document.getElementById('tempAmbient').value);
+                const batAh = parseFloat(document.getElementById('batteryAh').value);
+                const batVolt = parseFloat(document.getElementById('batteryVolts').value);
+                const batCount = parseFloat(document.getElementById('batteryCount').value);
+                const invEff = parseFloat(document.getElementById('inverterEff').value) / 100;
+                if(isNaN(cLoad) || isNaN(tAmb) || isNaN(batAh) || isNaN(batVolt) || isNaN(batCount)) throw "Data exception";
+                // Matriz de Degradación Térmica en Baterías Plomo-Ácido/Gel (Estandar STC)
+                let thermalDeratingFactor = 1.0;
+                if(tAmb >= 30 && tAmb < 35) thermalDeratingFactor = 0.96;
+                if(tAmb >= 35 && tAmb < 40) thermalDeratingFactor = 0.88;
+                if(tAmb >= 40) thermalDeratingFactor = 0.78;
+                const DoD = 0.5; // Depth of Discharge límite (vida útil de batería balanceada, conservador)
+                const realPower = cLoad / invEff; // Potencia real de arrastre del inversor
+                // Energía total = V * Ah * Cantidad * ProfundidadDescarga * Temperatura(Factor)
+                const totalEnergyWh = (batVolt * batAh * batCount) * DoD * thermalDeratingFactor;
+                const runTimeH = totalEnergyWh / realPower;
+                
+                const horas = Math.floor(runTimeH);
+                const mins = Math.round((runTimeH - horas) * 60);
+                document.getElementById('upsResult').innerHTML = `
+                    <div class="mb-1">Demanda Inversor: <span class="text-gray-400">${realPower.toFixed(2)} W (Eficiencia ${invEff*100}%)</span></div>
+                    <div class="mb-1">Curva Térmica (${tAmb}°C): <span class="text-orange-400">Degradación del ${((1.0 - thermalDeratingFactor)*100).toFixed(1)}%</span></div>
+                    <div class="mb-2 mt-2 pt-2 border-t border-gray-700">Autonomía Calculada Pura:</div>
+                    <div class="text-xl text-stcBlue font-bold">${horas} Horas, ${mins} Minutos</div>
+                `;
+            } catch (e) {
+                document.getElementById('upsResult').innerHTML = `<span class="text-red-500">Valores métricos inconsistentes.</span>`;
+            }
         }
     </script>
 </body>
